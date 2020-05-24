@@ -1,2 +1,2 @@
-<center># 运维笔记</center>
+<center># 运维笔记</center>   
 记录日常运维搬砖时的踩过的坑 /(ㄒoㄒ)/~~
