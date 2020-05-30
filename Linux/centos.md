@@ -1,5 +1,5 @@
 # Linux 笔记
-===
+----
  - **升级版本**   
 1. 检查主机Cent OS 版本   
 cat /etc/centos-release   
@@ -12,3 +12,5 @@ cat /etc/centos-release
    reboot    
 5. 查看Cent OS版本,确认升级成功    
    cat /etc/centos-release    
+
+ - **安装mysql**
