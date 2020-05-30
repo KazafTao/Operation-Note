@@ -1,5 +1,5 @@
 # Linux 笔记
-
+===
  - **升级版本**   
 1. 检查主机Cent OS 版本   
 cat /etc/centos-release   
