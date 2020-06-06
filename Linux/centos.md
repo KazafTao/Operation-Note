@@ -12,7 +12,7 @@ cat /etc/centos-release
    reboot    
 5. 查看Cent OS版本,确认升级成功    
    cat /etc/centos-release    
-===
+----
  - **安装Mysql**   
 1. 下载Mysql
 wget https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.29-1.el7.x86_64.rpm-bundle.tar   
@@ -43,5 +43,5 @@ character_set_server=utf8
 init_connect='SET NAMES utf8'   
 6. 启动mysql   
 systemctl start mysqld.service          
-=======
+----
 
