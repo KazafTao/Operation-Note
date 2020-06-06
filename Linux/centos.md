@@ -27,7 +27,7 @@ rpm -ivh mysql-community-libs-5.7.29-1.el7.x86_64.rpm
 rpm -ivh mysql-community-client-5.7.29-1.el7.x86_64.rpm   
 rpm -ivh mysql-community-server-5.7.29-1.el7.x86_64.rpm  
 如果出现这个错    
-error: Failed dependencies:   
+< error: Failed dependencies:   
 	libaio.so.1()(64bit) is needed by mysql-community-server-5.7.29-1.el7.x86_64   
 	libaio.so.1(LIBAIO_0.1)(64bit) is needed by mysql-community-server-5.7.29-1.el7.x86_64   
 	libaio.so.1(LIBAIO_0.4)(64bit) is needed by mysql-community-server-5.7.29-1.el7.x86_64   
