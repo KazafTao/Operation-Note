@@ -34,7 +34,7 @@ error: Failed dependencies:
 则执行yum install  -y libaio-devel.x86_64     
 5. 配置数据库       
 vim /etc/my.cnf           
-在[mysqld]下添加这三行
+在[mysqld]下添加这三行   
 #跳过登录验证   
 skip-grant-tables   
 #设置默认字符集UTF-8   
