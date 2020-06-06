@@ -1,5 +1,5 @@
 # Linux 笔记
-===
+----
  - **升级版本**   
 1. 检查主机Cent OS 版本   
 cat /etc/centos-release   
@@ -12,6 +12,7 @@ cat /etc/centos-release
    reboot    
 5. 查看Cent OS版本,确认升级成功    
    cat /etc/centos-release    
+<<<<<<< HEAD
 ===
  - **安装Mysql**   
 1. 下载Mysql
@@ -45,3 +46,5 @@ character_set_server=utf8
 init_connect='SET NAMES utf8'   
 6. 启动mysql   
 systemctl start mysqld.service          
+=======
+
