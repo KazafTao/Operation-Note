@@ -8,7 +8,7 @@ tar zxvf Python-2.7.18.tgz
 3. 编译安装   
 cd Python-2.7.18   
 ./configure --enable-optimizations   
-```make altinstall用于防止替换默认的python二进制文件/usr/bin/python。```
+```make altinstall用于防止替换默认的python二进制文件/usr/bin/python。```   
 make altinstall   
 4. 备份老版本   
 mv /usr/bin/python /usr/bin/python2.7.5   
