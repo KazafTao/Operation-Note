@@ -26,11 +26,10 @@ rpm -ivh mysql-community-common-5.7.29-1.el7.x86_64.rpm
 rpm -ivh mysql-community-libs-5.7.29-1.el7.x86_64.rpm   
 rpm -ivh mysql-community-client-5.7.29-1.el7.x86_64.rpm   
 rpm -ivh mysql-community-server-5.7.29-1.el7.x86_64.rpm  
-如果出现这个错    
-``` error: Failed dependencies:   
+如果出现这个错 ``` error: Failed dependencies:   
 	libaio.so.1()(64bit) is needed by mysql-community-server-5.7.29-1.el7.x86_64   
 	libaio.so.1(LIBAIO_0.1)(64bit) is needed by mysql-community-server-5.7.29-1.el7.x86_64   
-	libaio.so.1(LIBAIO_0.4)(64bit) is needed by mysql-community-server-5.7.29-1.el7.x86_64 ```   
+	libaio.so.1(LIBAIO_0.4)(64bit) is needed by mysql-community-server-5.7.29-1.el7.x86_64 ```      
 则执行yum install  -y libaio-devel.x86_64     
 5. 配置数据库       
 vim /etc/my.cnf           
