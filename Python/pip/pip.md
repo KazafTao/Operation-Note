@@ -7,8 +7,13 @@ pip install -i https://pypi.douban.com/simple  mysqldb
 在根目录下创建.pip目录，创建pip.conf,并写入   
 ```
 [global]
-index-url = https://pypi.douban.com/simple
+index-url=https://mirrors.aliyun.com/pypi/simple/
 
 [install]
-trusted-host=pypi.douban.com
+trusted-host=mirrors.aliyun.com
 ```   
+- **查看哪些包需要更新**
+pip3 list --outdated
+
+- **pip升级包**
+ pip install --upgrade 要升级的包名
