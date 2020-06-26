@@ -8,5 +8,8 @@
 
  - **实现**
 1. shell   
-watchdog.sh : 检查服务是否在服，如果服务退服，重新启动服务。   
+watchdog.sh : 
+1. monitor : 检查服务是否在服，如果服务退服，重新启动服务。
+2. start : 启动服务
+3. stop : 终止服务   
 register.sh : 向crontab中写入 / 取消每分钟执行一次watchdog.sh   
