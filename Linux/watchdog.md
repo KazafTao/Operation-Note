@@ -24,46 +24,46 @@
 			>  [include]    
 			 				 files = /etc/supervisor/*.conf
 
-		- 添加被监控程序
-			- mkdir /etc/supervisor
-			- vim /etc/supervisor/program.conf
-			- 
-			> [program:uwsgi]    
-			> 					command=/usr/local/bin/uwsgi --ini /home/mysite_uwsgi/mysite.ini     
-			> 					user=root     
-			> 					autorestart=true    
-			> 					autostart=true     
-			> 					startretries=3     
-			> 					redirect_stderr=true     
-			> 					startsecs=5     
-			> 					stdout_logfile=/var/log/django/supervisor.log     
-			> 					stopasgroup=true     
-			> 					killasgroup=true    
-			> 					priority=999     
+	- 添加被监控程序
+		- mkdir /etc/supervisor
+		- vim /etc/supervisor/program.conf
+		- 
+		> [program:uwsgi]    
+		> 					command=/usr/local/bin/uwsgi --ini /home/mysite_uwsgi/mysite.ini     
+		> 					user=root     
+		> 					autorestart=true    
+		> 					autostart=true     
+		> 					startretries=3     
+		> 					redirect_stderr=true     
+		> 					startsecs=5     
+		> 					stdout_logfile=/var/log/django/supervisor.log     
+		> 					stopasgroup=true     
+		> 					killasgroup=true    
+		> 					priority=999     
 
-			- 说明
-				- command：需要托管给supervisor执行的命令，这里是uwsgi的启动命令，这里需要按自己的情况更改
-				- user：执行命令的用户，这里填root，你可以填其他的，只要有权限即可
-				- autorestart：uwsgi关闭后是否自动重启
-				- autostart：是否随supervisor启动而启动
-				- startretries：启动失败自动重试次数，默认是 3
-				- redirect_stderr：把 stderr 重定向到 stdout，默认 false
-				- startsecs：启动 5 秒后没有异常退出，就当作已经正常启动了
-				- stdout_logfile：日志文件存放目录
-				- stopasgroup：是否干掉程序的所有进程(包括子进程)
-				- killasgroup：作用同上
-				- priority：程序启动优先级，若有多个进程管理时使用，默认-1
-		- 启动
-			- supervisord -c /etc/supervisord.conf
-		- 管理
-			- 查看进程状态
-				- supervisorctl status  [进程名]
-			- 启动进程
-				- supervisorctl start (进程名 | all)
-			- 停止进程
-				- supervisorctl stop (进程名 | all)
-			- 重启进程
-				- supervisorctl restart (进程名 | all)
-			- 添加新增进程
-				- supervisorctl reload
+		- 说明
+			- command：需要托管给supervisor执行的命令，这里是uwsgi的启动命令，这里需要按自己的情况更改
+			- user：执行命令的用户，这里填root，你可以填其他的，只要有权限即可
+			- autorestart：uwsgi关闭后是否自动重启
+			- autostart：是否随supervisor启动而启动
+			- startretries：启动失败自动重试次数，默认是 3
+			- redirect_stderr：把 stderr 重定向到 stdout，默认 false
+			- startsecs：启动 5 秒后没有异常退出，就当作已经正常启动了
+			- stdout_logfile：日志文件存放目录
+			- stopasgroup：是否干掉程序的所有进程(包括子进程)
+			- killasgroup：作用同上
+			- priority：程序启动优先级，若有多个进程管理时使用，默认-1
+	- 启动
+		- supervisord -c /etc/supervisord.conf
+	- 管理
+		- 查看进程状态
+			- supervisorctl status  [进程名]
+		- 启动进程
+			- supervisorctl start (进程名 | all)
+		- 停止进程
+			- supervisorctl stop (进程名 | all)
+		- 重启进程
+			- supervisorctl restart (进程名 | all)
+		- 添加新增进程
+			- supervisorctl reload
 
