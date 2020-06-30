@@ -21,25 +21,25 @@
 		  - echo_supervisord_conf > /etc/supervisord.conf
 		  - vim /etc/supervisord.conf
 		  - 将最后的内容修改为
-			>  [include]
+			>  [include]    
 			 				 files = /etc/supervisor/*.conf
 
 		- 添加被监控程序
 			- mkdir /etc/supervisor
 			- vim /etc/supervisor/program.conf
 			- 
-			> [program:uwsgi]
-			> 					command=/usr/local/bin/uwsgi --ini /home/mysite_uwsgi/mysite.ini
-			> 					user=root
-			> 					autorestart=true
-			> 					autostart=true
-			> 					startretries=3
-			> 					redirect_stderr=true
-			> 					startsecs=5
-			> 					stdout_logfile=/var/log/django/supervisor.log
-			> 					stopasgroup=true
-			> 					killasgroup=true
-			> 					priority=999
+			> [program:uwsgi]    
+			> 					command=/usr/local/bin/uwsgi --ini /home/mysite_uwsgi/mysite.ini     
+			> 					user=root     
+			> 					autorestart=true    
+			> 					autostart=true     
+			> 					startretries=3     
+			> 					redirect_stderr=true     
+			> 					startsecs=5     
+			> 					stdout_logfile=/var/log/django/supervisor.log     
+			> 					stopasgroup=true     
+			> 					killasgroup=true    
+			> 					priority=999     
 
 			- 说明
 				- command：需要托管给supervisor执行的命令，这里是uwsgi的启动命令，这里需要按自己的情况更改
