@@ -59,6 +59,8 @@ update user set authentication_string='' where user='root';
 mysql   
 ALTER user 'root'@'localhost' IDENTIFIED BY 'NewPassword'   
 
+----------
+
 ## 配置开发环境
 1. yum install mysql-devel -y
 2. pip3 install  mysqlclient
