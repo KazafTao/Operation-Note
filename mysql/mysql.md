@@ -2,9 +2,9 @@
 
 ## 安装mysql server
 1. 下载Mysql
-wget https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.29-1.el7.x86_64.rpm-bundle.tar   
+wget https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-8.0.21-1.el8.x86_64.rpm-bundle.tar   
 2. 解压  
-tar -xvf mysql-5.7.29-1.el7.x86_64.rpm-bundle.tar    
+tar -xvf mysql-8.0.21-1.el8.x86_64.rpm-bundle.tar    
 3. 卸载mariadb-lib    
 rpm -qa | grep mariadb        
 rpm -e --nodeps {grep 到的mariabd-lib}   
