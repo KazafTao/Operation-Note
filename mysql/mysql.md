@@ -39,10 +39,25 @@ mysql -u root -p 临时密码
 如果要设置简单密码的话，先屏蔽密码安全策略   
 set global validate_password.policy=0;   
 set global validate_password.length=1;   
+
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass!';   
 
 ----------
 
+## 重置Mysql8密码
+1. 允许免密登录   
+vim /etc/my.cnf   
+在 [mysqld] 最后加上skip-grant-tables，保存并退出   
+2. 重启mysql   
+service mysqld restart   
+3.  置空root密码   
+mysql   
+use mysql   
+update user set authentication_string='' where user='root';   
+退出   
+4. 重置新密码   
+mysql   
+ALTER user 'root'@'localhost' IDENTIFIED BY 'NewPassword'   
 
 ## 配置开发环境
 1. yum install mysql-devel -y
