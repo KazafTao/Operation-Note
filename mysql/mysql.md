@@ -36,6 +36,9 @@ systemctl daemon-reload
 6. 修改密码   
 grep "A temporary password" /var/log/mysqld.log   
 mysql -u root -p 临时密码   
+如果要设置简单密码的话，先屏蔽密码安全策略   
+set global validate_password.policy=0;   
+set global validate_password.length=1;   
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass!';   
 
 ----------
