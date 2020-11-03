@@ -31,6 +31,5 @@ grammar_cjkRuby: true
 				  {
 						 "registry-mirrors": ["https://docker.mirrors.ustc.edu.cn"] 
 				   } 
-				 ``` 
 		- systemctl restart docker
 
