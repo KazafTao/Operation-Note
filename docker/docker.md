@@ -19,6 +19,7 @@ grammar_cjkRuby: true
 
 ## Docker的基本操作
 
+<<<<<<< HEAD
  - 安装
 	 - 安装docker
 		 - 国内dao云一键安装
@@ -80,4 +81,19 @@ grammar_cjkRuby: true
 		 - hub.daocloud.io (免登录)
 	 - 阿里镜像
  - 公司内私服
+=======
+ - 安装docker
+	 - 国内dao云一键安装
+		 - curl -sSL https://get.daocloud.io/docker | sh
+ - 设置docker镜像源
+	 - 创建目录
+		 - mkdir /etc/docker
+	 - 编辑文件
+		 - vim /etc/docker/daemon.json
+		 -   ``` 
+				  {
+						 "registry-mirrors": ["https://docker.mirrors.ustc.edu.cn"] 
+				   } 
+		- systemctl restart docker
+>>>>>>> d4bd8be2cd6f7566920598c1b3da3ba29612389f
 
