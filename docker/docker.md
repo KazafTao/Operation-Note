@@ -62,6 +62,7 @@ grammar_cjkRuby: true
 			- -d 后台运行
 			- -p 宿主机端口:容器端口  端口映射
 			- -name 容器名称
+			- -v 数据卷名称 / 路径 : 容器内路径
 	- 查看容器日志
 		- docker logs -f 容器id
 			- -f 表示可以滚动查看日志的最后几行
@@ -70,6 +71,21 @@ grammar_cjkRuby: true
 		- docker remove $(docker ps -qa 容器id)
 	- 启动容器
 		- docker start 容器id
+- 数据卷相关操作
+	- 创建数据卷
+		- docker volume create 数据卷名
+	- 查看数据卷
+		- docker volume ls
+		- 查看某个数据卷的详细信息
+			- docker volume inspect 数据卷名
+		- 删除数据卷
+			- docker volume rm 数据卷名
+
+
+----------
+## Dockerfile
+from 原镜像
+copy 宿主机路径:容器内路径
 
 ## Docker的中央仓库
 
@@ -80,5 +96,7 @@ grammar_cjkRuby: true
 	 - 阿里镜像
  - 公司内私服
 
+
+----------
 
 
