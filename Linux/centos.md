@@ -102,3 +102,9 @@ GATEWAY="192.168.152.2"
 DNS1="8.8.8.8"
 ```
 
+重启网络
+
+```shell
+service network restart
+```
+
