@@ -86,6 +86,26 @@ systemctl enable firewalld
 vim /etc/sysconfig/network-scripts/ifcfg-ens33
 ```
 
+网络默认配置为
+
+```shell
+TYPE="Ethernet"
+PROXY_METHOD="none"
+BROWSER_ONLY="no"
+BOOTPROTO="dhcp"
+DEFROUTE="yes"
+IPV4_FAILURE_FATAL="no"
+IPV6INIT="yes"
+IPV6_AUTOCONF="yes"
+IPV6_DEFROUTE="yes"
+IPV6_FAILURE_FATAL="no"
+IPV6_ADDR_GEN_MODE="stable-privacy"
+NAME="ens33"
+UUID="af8c5a0b-66b0-49ad-9db8-e9dc6cb295cf"
+DEVICE="ens33"
+ONBOOT="yes"
+```
+
 修改 `BOOTPROTO=static`
 
 ```conf
