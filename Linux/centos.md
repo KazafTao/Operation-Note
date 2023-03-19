@@ -108,7 +108,7 @@ ONBOOT="yes"
 
 修改 `BOOTPROTO=static`
 
-```conf
+```shell
 #如果没有该配置项，则添加，有则修改
 BOOTPROTO="static"
 #设置网卡启动方式为 开机启动 并且可以通过系统服务管理器 systemctl 控制网卡
