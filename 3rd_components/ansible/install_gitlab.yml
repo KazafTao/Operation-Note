@@ -1,0 +1,32 @@
+- name: Install GitLab
+  hosts: gitlab_server
+  become: true
+
+  tasks:
+  - name: Install dependencies
+    yum:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - curl
+      - policycoreutils-python
+      - openssh-server
+      - postfix
+  
+  - name: Add GPG Key
+    rpm_key:
+      key: https://packages.gitlab.com/gpg.key
+      state: present
+      
+  - name: Add GitLab package repository
+    yum_repository:
+      name: gitlab-ce
+      description: gitlab-ce repo
+      baseurl: https://packages.gitlab.com/gitlab/gitlab-ce/el/7/$basearch
+      gpgcheck: yes
+      enabled: yes
+  
+  - name: Install GitLab package
+    yum:
+      name: gitlab-ce
+      state: present
