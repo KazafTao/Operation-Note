@@ -81,6 +81,36 @@ docker pull jenkins/jenkins:lts
 docker run --privileged -p 8080:8080 -v /var/jenkins:/var/jenkins_home jenkins/jenkins:lts
 ```
 
+## 构建任务
+
+在Jenkins中配置和管理构建任务需要遵循以下步骤：
+
+1. 登录到Jenkins服务器，并进入Jenkins控制台。
+2. 点击“新建任务”按钮，然后选择“自由风格的软件项目”或其他合适的选项。 
+3. 输入任务的名称并添加描述，然后点击“确定”按钮。
+4. 在任务配置页面，配置源代码管理、构建触发器、构建环境等详细信息。
+5. 在“构建”部分，添加构建步骤，例如编译、打包、测试等。
+6. 配置构建后操作，例如邮件通知、构建报告等。
+7. 点击“保存”按钮保存任务配置。
+
+除了以上步骤外，还可以使用Jenkins提供的Pipeline功能来创建更为复杂的构建流程。可以通过编写Jenkinsfile文件来定义整个流程的各个阶段和步骤。
+
+### 构建方式
+
+Jenkins提供了多种构建方式，其中一些常见的包括：
+
+1. 自由风格：这是Jenkins的默认构建方式，它允许用户在构建过程中自由地配置各种参数和构建步骤。
+
+2. 流水线：流水线是一种使用Jenkinsfile定义的脚本化构建方式。通过Jenkinsfile，用户可以将构建过程分为多个阶段，并针对每个阶段定义不同的操作。
+
+3. Maven构建：Jenkins可以与Maven集成，使用Maven构建项目并管理依赖项。(通过Maven Integration插件)
+
+4. Gradle构建：Jenkins还可以与Gradle集成，使用Gradle构建项目并管理依赖项。
+
+5. Ant构建：Jenkins也支持使用Apache Ant构建项目。
+
+除了上述构建方式外，Jenkins还支持其他构建方式，如Shell脚本、Batch脚本等。用户可以根据自己的需要选择适合自己的构建方式。
+
 ## 基础概念
 
 ### job
@@ -97,35 +127,38 @@ jenkins通过文件形式来存储和管理数据。jenkins所有数据都存放
 
 jenkins_home目录可以在jenkins主页的系统管理  >  系统配置中查看。
 
-## 功能
+## 流水线
 
-### 创建job
+### 语法
 
-在主页点击新建任务
+Jenkins Pipeline是一种可定义基于代码的语法，它允许您创建持续交付（CD）流水线。以下是Jenkins流水线语法的基本元素：
 
-![image-20220830170519555](C:\Users\wade\AppData\Roaming\Typora\typora-user-images\image-20220830170519555.png)
+1. 声明Pipeline：使用`pipeline`关键字声明Pipeline。
 
-### 从git下载代码
+2. 代理节点：使用`agent`关键字指定构建应该在哪个节点上运行。
 
-首先要下载git插件
+3. 阶段（Stage）：使用`stage`关键字声明一个阶段，并给该阶段命名。阶段用于将构建过程分解为多个步骤，并且可以在Jenkins Pipeline中显示每个步骤所需的时间和状态。
 
-在主页点击新建任务，创建自由风格的软件项目，点击确定
+4. 步骤（Step）：在阶段内使用各种构建步骤，如`sh`步骤（执行Shell命令）、`echo`步骤（输出消息到控制台）、`git`步骤（拉取代码）等。
 
-在源码管理下，选择git，在Repository URL中填入git代码的地址，如https://github.com/KazafTao/AppStatus.git。在Credentials中选择对应的凭证，如github中选择github的账号。没有github凭证的需要先创建github凭证。(选择用户密码凭证，输入github的账号密码)
+5. 环境（Environment）：使用`environment`关键字设置环境变量。这些变量可以在流水线的任何步骤中使用。
 
-保存任务。
+6. 参数化（Parameterization）：使用`parameters`关键字将参数传递给Pipeline。这使得用户可以在运行Pipeline时更改某些值。
 
-点击立即构建即可下载代码
+以下是一个简单的Jenkins Pipeline示例：
 
-### 定时构建
+```
+pipeline {
+    agent any 
+    stages {
+        stage('Build') {
+            steps {
+                sh 'echo "Hello, World!"'
+            }
+        }
+    }
+}
+```
 
-从job中点击配置，选择构建触发器，勾选**定时构建**，填写需要构建的时间。
-
-jenkins定时构建遵循以下定时语法:( * 表示所有取值 )
-
-分钟  小时  一月的天数 月份 一周的天数
-
-0-59  0-23 1-31 1-12  0-7(0和7都代表周日) 
-
-如每周一，周三，周五晚上8点构建一次的表达式为 0 20 * * 1,3,5 。一周内每两天，晚上8点执行一次构建，表达式为 0 20 * * */2
+此示例声明了一个基本的Pipeline，其中有一个阶段（Build），该阶段包含一个步骤（echo），以输出“Hello, World!”消息。
 
