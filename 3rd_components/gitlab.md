@@ -1,5 +1,9 @@
 # gitlab
 
+- [gitlab](#gitlab)
+  - [安装部署](#安装部署)
+
+
 ## 安装部署
 
 要在CentOS上部署GitLab，可以按照以下步骤进行操作：
