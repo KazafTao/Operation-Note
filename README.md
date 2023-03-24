@@ -4,7 +4,7 @@
 
 ----------
 ## 运维技术栈
-![运维技术栈](img/运维技术栈.png)
+[![运维技术栈](img/运维技术栈.png)]
 
 
 ----------
@@ -26,8 +26,12 @@
 
  - [Mysql](mysql/mysql.md)
 
-### 三方件
+### 虚拟化
+ - [Docker](docker/docker.md)
 
+### 三方件
+ - [ansible](3rd_components/ansible/ansible.md)
+ - [jenkins](3rd_components/jenkins.md)
  - [Prometheus](3rd_components/prometheus/prometheus.md)
    
 
