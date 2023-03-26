@@ -1,0 +1,11 @@
+---
+- name: Install Python 3
+  hosts: all
+  # 获取sudo权限
+  become: true
+  tasks:
+    - name: Install Python 3
+     #使用Ansible的内置“package”模块来安装Python 3
+      package:
+        name: python3
+        state: present
