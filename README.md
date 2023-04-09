@@ -9,7 +9,8 @@
 
  - [centos](系统管理/centos.md)
  - [shell](系统管理/shell.md)
- - [shell](系统管理/shell.md)
+ - [powershell](系统管理/powershell.md)
+ - [openvpn](系统管理/搭建openvpn服务.md)
 
 # 网络基础
 熟悉 TCP/IP 协议、路由器、交换机等网络设备的配置、管理和维护，掌握网络调试和排错方法。
