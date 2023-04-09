@@ -34,68 +34,38 @@
 
   
 
-## 升级Python 3.10
+## 升级Python 3.11
 
-1. 官网下载新版本Python   
-   wget https://www.python.org/ftp/python/3.10.5/Python-3.10.5.tgz
-   
-2. 解压
-
-   ```shell
-   tar zxvf Python-3.10.5.tgz
-   ```
-
-3. 升级openssl
-   
-   openssl的作用：pip安装其他包时需要使用openssl
-   
-   ```shell
-   #下载源码包
-   wget https://www.openssl.org/source/openssl-1.1.1q.tar.gz
-   #解压
-   tar -zxvf openssl-1.1.11q.tar.gz
-   #进入文件夹
-   cd openssl-1.1.1q/
-   #配置指定安装目录
-   ./config --prefix=/usr/local/openssl
-   #编译安装
-   make && make install
-   #备份老版本的openssl
-   mv /usr/bin/openssl /usr/bin/openssl.old
-   mv /usr/include/openssl /usr/include/openssl.old
-   #新建连接
-   ln -s /usr/local/openssl/bin/openssl /usr/bin/openssl
-   ln -s /usr/local/openssl/include/openssl /usr/include/openssl
-   #库类文件
-   echo "/usr/local/openssl/lib" >> /etc/ld.so.conf
-   #重载配置
-   ldconfig
-   ```
-   
-3. 编译安装
-   
-      ```shell
-      cd Python-3.10.5/
-      
-      # 安装ssl
-      ./configure --prefix=/usr/local/python3 --with-openssl=/usr/local/openssl
-      
-      # 编译安装
-      make
-      
-      make install
-      
-      # 备份老版本
-      mv /usr/bin/python /usr/bin/python_old2
-      
-      #将python链接指向新安装的python3
-      ln -s /usr/local/python3/bin/python3  /usr/bin/python
-      
-      #查看python版本
-      python -V
+1. ```shell
+      cd /root
+      #只是将python3.11的安装包下载到 /root目录下
+      wget https://www.python.org/ftp/python/3.11.0/Python-3.11.0.tgz
+      #下载最新的软件安装包
+      tar -zxvf Python-3.11.0.tgz
+      #解压缩安装包
+      yum -y install gcc zlib zlib-devel libffi libffi-devel
+      #安装源码编译需要的编译环境
+      yum install readline-devel
+      #可以解决后期出现的方向键、删除键乱码问题，这里提前避免。
+      yum install openssl-devel openssl11 openssl11-devel
+      #安装openssl11，后期的pip3安装网络相关模块需要用到ssl模块。
+      export CFLAGS=$(pkg-config --cflags openssl11)
+      export LDFLAGS=$(pkg-config --libs openssl11)
+      #设置编译FLAG，以便使用最新的openssl库
+      cd /root/Python-3.11.0
+      #进入刚解压缩的目录
+      ./configure --prefix=/usr/python --with-ssl --with-sqlite3 --with-threads
+      #指定python3的安装目录为 /usr/python 并使用ssl模块，指定目录好处是
+      #后期删除此文件夹就可以完全删除软件了。
+      make && make install
+      #就是源码编译并安装了，时间会持续几分钟。
+      ln -s /usr/python/bin/python3 /usr/bin/python3
+      ln -s /usr/python/bin/pip3 /usr/bin/pip3
+      #指定链接，此后我们系统的任何地方输入python3就是我们安装的
+      #这个最新版python3了
       ```
-   
-3. 修复yum和urlgrabber-ext-down不兼容的问题
+      
+1. 修复yum和urlgrabber-ext-down不兼容的问题
    
    ```shell
    vi /usr/bin/yum
