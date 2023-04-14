@@ -13,6 +13,7 @@ yum -y install openvpn easy-rsa iptables-services
 
 1. 将 easy-rsa 脚本复制到 /etc/openvpn/
 ```shell
+mkdir /etc/openvpn/easy-rsa/
 cp -r /usr/share/easy-rsa/3.0.8/* /etc/openvpn/easy-rsa/
 cp /usr/share/doc/easy-rsa-3.0.8/vars.example /etc/openvpn/easy-rsa/vars
 ```
@@ -28,7 +29,7 @@ set_var EASYRSA_REQ_COUNTRY "CN"
 set_var EASYRSA_REQ_PROVINCE "Beijing"
 set_var EASYRSA_REQ_CITY "Beijing"
 set_var EASYRSA_REQ_ORG "OpenVPN CA"
-set_var EASYRSA_REQ_EMAIL "4********4@.qq.com"
+set_var EASYRSA_REQ_EMAIL "63***59@qq.com"
 set_var EASYRSA_REQ_OU  "My VPN"
 ```
 变量生效
@@ -44,7 +45,7 @@ source ./vars   # 使变量生效
 4. 生成 OpenVPN 服务器证书和密钥
 
 ```shell
-./easyrsa build-server-full remitProd nopass     #第一个参数 remitProd 为证书名称
+./easyrsa build-server-full server nopass     #第一个参数 remitProd 为证书名称
 ./easyrsa gen-dh
 openvpn --genkey --secret ta.key
 #如果出现警告
@@ -56,7 +57,7 @@ openvpn --genkey secret ta.key
 5. 复制证书及密钥文件
 ```shell
 cd /etc/openvpn/
-cp /etc/openvpn/easy-rsa/{pki/dh.pem,pki/ca.crt,ta.key,pki/issued/remitProd.crt,pki/private/remitProd.key} /etc/openvpn/
+cp /etc/openvpn/easy-rsa/{pki/dh.pem,pki/ca.crt,ta.key,pki/issued/server.crt,pki/private/server.key} /etc/openvpn/
 ```
 ## 配置OpenVPN服务端配置
 
@@ -71,8 +72,8 @@ port 1194 #服务端端口号
 proto tcp #通过tcp协议来连接，也可以通过udp
 dev tun #路由模式，注意windows下必须使用dev tap
 ca ca.crt #ca证书存放位置
-cert remitProd.crt #服务器证书存放位置
-key remitProd.key  # #服务器密钥存放位置
+cert server.crt #服务器证书存放位置
+key server.key  # #服务器密钥存放位置
 dh dh.pem #dh.pem存放位置
 tls-auth ta.key 0  #ta.key存放位置
 server 10.19.0.0 255.255.255.0 #虚拟局域网网段设置
