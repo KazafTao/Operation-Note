@@ -177,3 +177,7 @@ pipeline {
 
 此示例声明了一个基本的Pipeline，其中有一个阶段（Build），该阶段包含一个步骤（echo），以输出“Hello, World!”消息。
 
+## 参与过的项目
+
+### dataconnect 自动化构建
+
