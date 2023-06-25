@@ -282,14 +282,14 @@ firewall-cmd --list-ports
 5. 添加防火墙开放指定端口
 ```shell
 firewall-cmd --zone=public --add-port=80/tcp --permanent   # 添加80端口
-firewall-cmd --zone=public --add-port=8080/tcp --permanent # 添加8080端口
+firewall-cmd --zone=public --add-service=http --permanent # 添加http服务
 ```
 注：上面命令中的"--permanent"参数表示永久保存这个改动，重启后也会生效。
 
 6. 删除防火墙开放的指定端口
 ```shell
 firewall-cmd --zone=public --remove-port=80/tcp --permanent   # 删除80端口
-firewall-cmd --zone=public --remove-port=8080/tcp --permanent # 删除8080端口
+firewall-cmd --zone=public --remove-service=8080/tcp --permanent # 删除httpf
 ```
 
 7. 重新加载防火墙，使新的设置生效
@@ -394,7 +394,7 @@ systemctl reload rsyslog
 
 在需要清理的日志文件配置文件中，添加如下内容：
 
-```
+```ini
 /var/log/service.log {
     rotate 7
     daily
@@ -683,7 +683,7 @@ nameserver 8.8.4.4
 
 需要注意的是，对于一些网络服务的配置，还需要进行更复杂的设置，具体操作请参考相关文档或教程。同时，在进行网络服务配置时，应该谨慎操作，确保操作前充分了解和确认影响。
 
-## Apache、Nginx等Web服务器的安装和配置
+## Web服务器的安装和配置
 
 在CentOS系统中，可以安装和配置多个Web服务器，如Apache、Nginx等。
 
@@ -697,7 +697,7 @@ Apache HTTP Server是一个开放源码的网页服务器，具有广泛的应�
 
 例如，添加一个虚拟主机（域名为example.com，网站目录为/var/www/example）可以通过如下配置：
 
-```
+```ini
 <VirtualHost *:80>
     ServerAdmin webmaster@example.com
     ServerName example.com
@@ -719,7 +719,7 @@ Nginx是一个轻量级、高性能的Web服务器，具有低内存占用和高
 
 例如，添加一个虚拟主机（域名为example.com，网站目录为/var/www/example）可以通过如下配置：
 
-```
+```ini
 server {
     listen       80;
     server_name  example.com;
